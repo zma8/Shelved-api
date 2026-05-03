@@ -19,6 +19,7 @@ router.post('/',async (req,res)=>{
             status:req.body.status || 'Maybe today?',
             note:req.body.note || '',
             mood:req.body.mood || '',
+            lastOpened:new Date(),
             userId:req.user._id,
         });
         res.status(201).json(newBook);
@@ -34,6 +35,8 @@ router.put('/:id',async (req,res)=>{
         if(!book){
             return res.status(404).json({err:'Book not found'}); 
         }
+
+        req.body.lastOpened=new Date();
 
         if(req.body.status && req.body.status !==book.status){
             req.body.lastOpened=new Date();
