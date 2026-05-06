@@ -9,13 +9,18 @@ const bookSchema=mongoose.Schema({
     },
     status:{
         type:String,
-        enum:['Maybe today?', 'Loading...','Resting','Done enough','Not for me'],
+        enum:['Maybe today?', 'Loading...','Resting','Done','Not for me'],
         default:'Maybe today?',
     },
     note:{
         type:String,
         trim:true,
         default:'',
+    },
+    highlight: {
+        type: String,
+        trim: true,
+        default: '',
     },
     lastOpened:{
         type:Date,
